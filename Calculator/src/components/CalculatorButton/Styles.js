@@ -1,6 +1,4 @@
-import { Dimensions } from "react-native";
-
-import Colors from "../../shered/constants/Colors";
+import Colors from "../../shared/constants/Colors";
 import styled from "styled-components/native";
 
 const height = 75;

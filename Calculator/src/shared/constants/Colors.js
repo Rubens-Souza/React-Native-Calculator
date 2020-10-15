@@ -3,6 +3,7 @@ const Colors = {
     BluishLightGrey: "#f2f8fc",
     White: "#ffffff",
     SoftBlack: "#454545",
+    LightGray: "#f2f8fc",
 };
 
 export default Colors;

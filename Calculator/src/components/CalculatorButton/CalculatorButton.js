@@ -1,6 +1,6 @@
 import React from "react";
 
-import ButtonTypes from "../../shered/constants/ButtonTypes";
+import ButtonTypes from "../../shared/constants/ButtonTypes";
 import { StyledNumberButton, StyledNumberButtonText, StyledOperationButton, StyledOperationButtonText, StyledDoubleVerticalOperationButton } from "./Styles";
 
 const CalculatorButton = ({

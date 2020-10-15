@@ -1,9 +1,8 @@
 import React from "react";
-import { View } from "react-native";
 
-import ButtonTypes from "../../shered/constants/ButtonTypes";
+import ButtonTypes from "../../shared/constants/ButtonTypes";
 import CalculatorButton from "../../components/CalculatorButton/CalculatorButton";
-import { StyledButtonGroup, StyledKeybordGroup } from "./styles";
+import { StyledButtonGroup, StyledKeybordGroup } from "./Styles";
 
 const Keyboard = (
     onNumberPress, onOperationPress
