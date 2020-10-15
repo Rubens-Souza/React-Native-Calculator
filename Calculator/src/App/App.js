@@ -1,14 +1,19 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView } from "react-native";
 
-const App = () => {
+import Styles from "./Styles";
+
+import Keyboard from "../features/Keyboard/Keyboard";
+
+const App = (
+    props
+) => {
 
     return (
-        <SafeAreaView>
-            <Text>Hi!!!</Text>
+        <SafeAreaView style={Styles.App}>
+            <Keyboard/>
         </SafeAreaView>
     );
-
 };
 
 export default App;
