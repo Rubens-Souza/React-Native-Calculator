@@ -20,5 +20,5 @@ export const StyledResultGroup = styled.View`
     border-bottom-width: 2px;
     border-bottom-color: ${Colors.LightGray};
     padding-bottom: 12px;
-    margin-bottom: 21px;
+    margin-bottom: 15px;
 `;
