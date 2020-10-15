@@ -1,18 +1,9 @@
 import React from "react";
-import { SafeAreaView } from "react-native";
+import Calculator from "../features/Calculator/Calculator";
 
-import Styles from "./Styles";
-
-import Keyboard from "../features/Keyboard/Keyboard";
-
-const App = (
-    props
-) => {
-
+const App = () => {
     return (
-        <SafeAreaView style={Styles.App}>
-            <Keyboard/>
-        </SafeAreaView>
+        <Calculator/>
     );
 };
 

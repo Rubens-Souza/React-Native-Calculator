@@ -9,5 +9,5 @@ export const StyledButtonGroup = styled.View`
 export const StyledKeybordGroup = styled.View`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 `;
