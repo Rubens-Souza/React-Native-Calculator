@@ -1,25 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ButtonTypes from "../../shared/constants/ButtonTypes";
 import CalculatorButton from "../../components/CalculatorButton/CalculatorButton";
 import { StyledButtonGroup, StyledKeybordGroup } from "./Styles";
 
-const Keyboard = (
-    onNumberPress, onOperationPress
-) => {
+import { hasSetFunctionProperty } from "../../shared/utils/Utils";
+import StringUtils from "../../shared/utils/StringUtils";
+import Operations from "../../shared/constants/Operations";
 
-    let actualNumber = "";
+const Keyboard = ({
+    onNumberPress=undefined, onOperationPress=undefined
+}) => {
 
-    const handleNumberPress = (numberPressed) => {
+    const [actualNumber, setActualNumber] = useState('0');
 
-        actualNumber = actualNumber.concat(`${numberPressed}`);
-        console.log(actualNumber);
+    const handleNumberPress = (buttonPressed) => {
+        if (actualNumber.indexOf('.') !== -1 && buttonPressed === '.') {
+            return;
+        }
+
+        if (actualNumber === '0' && buttonPressed !== '0' && buttonPressed !== '.') {
+            setActualNumber(`${buttonPressed}`);
+        }
+        else {
+            setActualNumber(`${actualNumber}${buttonPressed}`);
+        }
     };
+    
+    const handleOperationPress = (operationPressed) => {
+        let finalNumber = parseFloat(actualNumber);
+        setActualNumber(StringUtils.Empty);
+
+        if (hasSetFunctionProperty(onOperationPress)) {
+            onOperationPress(operationPressed, finalNumber);
+        }
+    };
+
+    useEffect(() => {
+        console.log("concat: " + actualNumber);
+        if (hasSetFunctionProperty(onNumberPress) && actualNumber !== StringUtils.Empty) {
+            onNumberPress(actualNumber);
+        }
+    }, [actualNumber]);
 
     return (
         <StyledKeybordGroup>
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={'CE'} operation={() => { handleNumberPress(9) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Clear} operation={() => { handleOperationPress(Operations.Clear) }} />
                 <CalculatorButton content={'7'} operation={() => { handleNumberPress(7) }} />
                 <CalculatorButton content={'4'} operation={() => { handleNumberPress(4) }} />
                 <CalculatorButton content={'1'} operation={() => { handleNumberPress(1) }} />
@@ -27,26 +54,26 @@ const Keyboard = (
             </StyledButtonGroup>
 
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={'+/-'} operation={() => { handleNumberPress(9) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Negative} operation={() => { handleOperationPress(Operations.Negative) }} />
                 <CalculatorButton content={'8'} operation={() => { handleNumberPress(8) }} />
                 <CalculatorButton content={'5'} operation={() => { handleNumberPress(5) }} />
                 <CalculatorButton content={'2'} operation={() => { handleNumberPress(2) }} />
-                <CalculatorButton content={'.'} operation={() => { handleNumberPress(8) }} />
+                <CalculatorButton content={'.'} operation={() => { handleNumberPress('.') }} />
             </StyledButtonGroup>
 
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={'%'} operation={() => { handleNumberPress(9) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Porcentaje} operation={() => { handleOperationPress(Operations.Porcentaje) }} />
                 <CalculatorButton content={'9'} operation={() => { handleNumberPress(9) }} />
                 <CalculatorButton content={'6'} operation={() => { handleNumberPress(6) }} />
                 <CalculatorButton content={'3'} operation={() => { handleNumberPress(3) }} />
-                <CalculatorButton type={ButtonTypes.Operation} content={'='} operation={() => { handleNumberPress(8) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Equals} operation={() => { handleOperationPress(Operations.Equals) }} />
             </StyledButtonGroup>
 
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={'/'} operation={() => { handleNumberPress(9) }} />
-                <CalculatorButton type={ButtonTypes.Operation} content={'*'} operation={() => { handleNumberPress(6) }} />
-                <CalculatorButton type={ButtonTypes.Operation} content={'-'} operation={() => { handleNumberPress(3) }} />
-                <CalculatorButton type={ButtonTypes.OperationDoubleVertical} content={'+'} streach={true} operation={() => { handleNumberPress(8) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Division} operation={() => { handleOperationPress(Operations.Division) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Multiplication} operation={() => { handleOperationPress(Operations.Multiplication) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Subtraction} operation={() => { handleOperationPress(Operations.Subtraction) }} />
+                <CalculatorButton type={ButtonTypes.OperationDoubleVertical} content={Operations.Sum} streach={true} operation={() => { handleOperationPress(Operations.Sum) }} />
             </StyledButtonGroup>
         </StyledKeybordGroup>
     );
