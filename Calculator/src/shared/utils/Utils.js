@@ -1,3 +1,3 @@
-export const isNumber = (string) => {
-    return !Number.isNaN(parseFloat(string));
+export const hasSetFunctionProperty = (value) => {
+    return typeof(value) === "function";
 };
