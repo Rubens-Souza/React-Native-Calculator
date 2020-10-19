@@ -7,8 +7,6 @@ import { StyledSafeAreaView } from "./Styles";
 
 import Operations from "../../shared/constants/Operations";
 import StringUtils from "../../shared/utils/StringUtils";
-import NumberUtils from "../../shared/utils/NumberUtils";
-import { OperationCharacter } from "../../shared/utils/RegexExpressions";
 
 import { formatDivisionSigns, formatMultiplicationSigns } from "../../shared/utils/Utils";
 
