@@ -1,1 +1,1 @@
-export const OperationCharacter = new RegExp("^[/+*\-\]$");
+export const OperationCharacter = new RegExp("[\/\+\*\-] ");
