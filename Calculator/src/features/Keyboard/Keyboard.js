@@ -15,7 +15,7 @@ const Keyboard = ({
     const [actualNumber, setActualNumber] = useState('0');
 
     const handleNumberPress = (buttonPressed) => {
-        if (actualNumber.indexOf('.') !== -1 && buttonPressed === '.') {
+        if (actualNumber === StringUtils.Empty && buttonPressed === '.' || actualNumber.indexOf('.') !== -1 && buttonPressed === '.') {
             return;
         }
 
@@ -37,7 +37,6 @@ const Keyboard = ({
     };
 
     useEffect(() => {
-        console.log("concat: " + actualNumber);
         if (hasSetFunctionProperty(onNumberPress) && actualNumber !== StringUtils.Empty) {
             onNumberPress(actualNumber);
         }
@@ -70,8 +69,8 @@ const Keyboard = ({
             </StyledButtonGroup>
 
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Division} operation={() => { handleOperationPress(Operations.Division) }} />
-                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Multiplication} operation={() => { handleOperationPress(Operations.Multiplication) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Division.interfaceSign} operation={() => { handleOperationPress(Operations.Division.interfaceSign) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Multiplication.interfaceSign} operation={() => { handleOperationPress(Operations.Multiplication.interfaceSign) }} />
                 <CalculatorButton type={ButtonTypes.Operation} content={Operations.Subtraction} operation={() => { handleOperationPress(Operations.Subtraction) }} />
                 <CalculatorButton type={ButtonTypes.OperationDoubleVertical} content={Operations.Sum} streach={true} operation={() => { handleOperationPress(Operations.Sum) }} />
             </StyledButtonGroup>
