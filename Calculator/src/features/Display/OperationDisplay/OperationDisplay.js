@@ -9,10 +9,10 @@ const OperationDisplay = ({
 
     const soroundOperationCharactes = () => {
         let content = new Array(0);
-        formula.split('').map((character) => {
+        formula.split('').map((character, index) => {
             if (character !== StringUitls.Espace && character !== '.' && Number.isNaN(parseInt(character))) {
                 content.push(
-                    <StyledFormulaOperationSymbolText>
+                    <StyledFormulaOperationSymbolText key={index}>
                         {character}
                     </StyledFormulaOperationSymbolText>
                 );

@@ -44,19 +44,25 @@ const Calculator = () => {
         if (operation === Operations.Equals) {
             clearExpression();
             setActualNumberIndex(1);
-            setNumberAt(expressionResult, 0);
             setResult(expressionResult);
+            setNumberAt(expressionResult, 0);
+            setActualOperation(StringUtils.Empty);
         }
         else if (operation === Operations.Porcentaje) {
-            expressionResutl = calculateExpression(`(${expression})/100`);
+            let porcentajeResult = calculateExpression(`(${expression})/100`);
             clearExpression();
             setActualNumberIndex(1);
-            setNumberAt(expressionResult, 0);
-            setResult(expressionResult);
-            console.log(expressionResutl);
+            setResult(porcentajeResult);
+            setNumberAt(porcentajeResult, 0);
+            setActualOperation(StringUtils.Empty);
         }
         else if (operation === Operations.Negative) {
-
+            let negationResult = expressionResutl = calculateExpression(`-(${expression})`);
+            clearExpression();
+            setActualNumberIndex(1);
+            setResult(negationResult);
+            setNumberAt(negationResult, 0);
+            setActualOperation(StringUtils.Empty);
         }
         else if (actualNumberIndex === 1) {
             setResult(expressionResult);
