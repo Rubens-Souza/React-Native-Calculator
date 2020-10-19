@@ -1,7 +1,7 @@
 const Operations = {
     Clear: "CE",
     Negative: "+/-",
-    Porcentaje: '%',
+    Percent: '%',
     Division: { interfaceSign: '÷', operationSign: '/' },
     Multiplication: { interfaceSign: '×', operationSign: '*' },
     Subtraction: '-',

@@ -21,6 +21,10 @@ const Calculator = () => {
     const [result, setResult] = useState();
 
     const handleNumberPress = (number) => {
+        if (actualOperation === StringUtils.Empty && actualNumberIndex !== 0) {
+            return;
+        }
+
         setNumberAt(number, actualNumberIndex);
     };
 
@@ -48,12 +52,12 @@ const Calculator = () => {
             setNumberAt(expressionResult, 0);
             setActualOperation(StringUtils.Empty);
         }
-        else if (operation === Operations.Porcentaje) {
-            let porcentajeResult = calculateExpression(`(${expression})/100`);
+        else if (operation === Operations.Percent) {
+            let percentResult = calculateExpression(`(${expression})/100`);
             clearExpression();
             setActualNumberIndex(1);
-            setResult(porcentajeResult);
-            setNumberAt(porcentajeResult, 0);
+            setResult(percentResult);
+            setNumberAt(percentResult, 0);
             setActualOperation(StringUtils.Empty);
         }
         else if (operation === Operations.Negative) {

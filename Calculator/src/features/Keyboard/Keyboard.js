@@ -61,7 +61,7 @@ const Keyboard = ({
             </StyledButtonGroup>
 
             <StyledButtonGroup>
-                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Porcentaje} operation={() => { handleOperationPress(Operations.Porcentaje) }} />
+                <CalculatorButton type={ButtonTypes.Operation} content={Operations.Percent} operation={() => { handleOperationPress(Operations.Percent) }} />
                 <CalculatorButton content={'9'} operation={() => { handleNumberPress(9) }} />
                 <CalculatorButton content={'6'} operation={() => { handleNumberPress(6) }} />
                 <CalculatorButton content={'3'} operation={() => { handleNumberPress(3) }} />
